@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV != "production") {
     require('dotenv').config();
 }
-console.log(process.env.SECRET);
+// console.log(process.env.SECRET);
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
@@ -21,6 +21,7 @@ const reviewRouter  = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const port = process.env.PORT || 4000;
 
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -128,8 +129,8 @@ app.use((err,req,res,next) => {
     // res.status(statusCode).send(message);
 });
 
-app.listen(8080,() => {
-    console.log("server is listening to port 8080");
+app.listen(port,() => {
+    console.log(`server is listening to port {port}`);
 });
 
 
